@@ -1,21 +1,17 @@
-import { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/main.css';
+import { Provider } from 'react-redux';
 import App from './App';
-import 'font-awesome/css/font-awesome.min.css';
-// Redux
+import store from './redux/store';
 
-// Assurer que l'élément root est correctement typé
-const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
-// Vérifier que rootElement n'est pas null pour éviter des erreurs TypeScript
-if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <StrictMode>
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </StrictMode>
-  );
-} else {
-  console.error('Root element not found');
-}
+    </Provider>
+  </React.StrictMode>
+);
