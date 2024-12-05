@@ -10,7 +10,7 @@ schemes:
   - http
 paths:
   /user/login:
-    get:
+    post:
       tags:
         - User Module
       summary: Login
