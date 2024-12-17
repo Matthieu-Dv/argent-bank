@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import App from './App';
+import { App } from './App';
 import store from './redux/store';
-import './css/main.css';
+import './css/main.scss';
 import 'font-awesome/css/font-awesome.min.css';
 
 const root = ReactDOM.createRoot(

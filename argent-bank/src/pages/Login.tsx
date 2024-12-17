@@ -1,7 +1,7 @@
 import React from 'react';
-import Navigation from '../compenants/Navigation';
-import Footer from '../compenants/Footer';
-import LoginForm from '../compenants/LoginForm';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { LoginForm } from '../components/LoginForm';
 
 const Login: React.FC = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import iconChat from '../assets/img/icon-chat.webp';
-import iconMoney from '../assets/img/icon-money.webp';
-import iconSecurity from '../assets/img/icon-security.webp';
-import Navigation from '../compenants/Navigation';
-import Footer from '../compenants/Footer';
+import iconChat from '../img/icon-chat.webp';
+import iconMoney from '../img/icon-money.webp';
+import iconSecurity from '../img/icon-security.webp';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
   return (
