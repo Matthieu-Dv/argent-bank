@@ -5,7 +5,7 @@ import Account from '../components/Account';
 import ProfileModif from '../components/ProfileModif';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
-import { fetchUserProfile } from '../redux/authSlice';
+import { fetchUserProfile } from '../redux/authActions';
 import { EditUserInfo } from '../components/EditUserInfo/EditUserInfo';
 
 // Données des comptes
@@ -68,7 +68,10 @@ const Profile: React.FC = () => {
           <ProfileModif userName={userName} firstName={firstName} />
         )}
         {/* Passer les données des comptes au composant Account */}
-        <Account accounts={accountsData} />
+        <section>
+          <h2 className="sr-only">Accounts</h2>
+          <Account accounts={accountsData} />
+        </section>
       </main>
       <Footer />
     </>

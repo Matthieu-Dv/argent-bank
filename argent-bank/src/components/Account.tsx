@@ -1,12 +1,12 @@
 import React from 'react';
 
-// Définition du type d'un compte
-type AccountData = {
+// Définition de l'interface d'un compte
+interface AccountData {
   id: number;
   title: string;
   amount: string;
   description: string;
-};
+}
 
 // Déclaration des props attendues par le composant
 interface AccountProps {
@@ -15,8 +15,7 @@ interface AccountProps {
 
 const Account: React.FC<AccountProps> = ({ accounts }) => {
   return (
-    <section>
-      <h2 className="sr-only">Accounts</h2>
+    <>
       {accounts.map((account) => (
         <div key={account.id} className="account">
           <div className="account-content-wrapper">
@@ -29,7 +28,7 @@ const Account: React.FC<AccountProps> = ({ accounts }) => {
           </div>
         </div>
       ))}
-    </section>
+    </>
   );
 };
 

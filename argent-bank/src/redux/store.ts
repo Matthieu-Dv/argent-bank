@@ -1,19 +1,32 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // Utilise localStorage par défaut
 import authReducer from './authSlice';
+
+// Configuration de redux-persist
+const persistConfig = {
+  key: 'auth', // La clé sous laquelle les données seront stockées
+  storage,
+};
+
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistedAuthReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'], // Ignore les actions spécifiques à redux-persist
+      },
+    }),
 });
 
-// We expose the store in the browser console for debugging, but only in non-production mode
-// Use store.getState() to view the current state in the browser console
-if (process.env.NODE_ENV !== 'production') {
-  (window as any).store = store;
-}
+// Redux Persistor pour synchronisation
+export const persistor = persistStore(store);
 
-//Typage du store
+// Typage du store
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

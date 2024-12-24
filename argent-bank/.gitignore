@@ -33,4 +33,4 @@ npm-cache/
 *.production
 
 # Misc
-coverage/        # Dossiers de test coverage si tu utilises des tests
+coverage/       

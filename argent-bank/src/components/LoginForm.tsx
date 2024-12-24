@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../redux/store';
-import { loginUser } from '../redux/authSlice';
-
-
+import { loginUser } from '../redux/authActions';
 
 export const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -14,22 +12,20 @@ export const LoginForm: React.FC = () => {
   const navigate = useNavigate();
 
   // We retrieve the loading, error and authentication state from the store
-  const { loading, error, isAuthenticated } = useSelector((state: RootState) => state.auth);
-
+  const { loading, error, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(loginUser({ email, password, rememberMe }));
   };
 
-
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/profile');
     }
   }, [isAuthenticated, navigate]);
-
-
 
   return (
     <section className="sign-in-content">
@@ -51,8 +47,7 @@ export const LoginForm: React.FC = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="input-remember">
@@ -65,13 +60,10 @@ export const LoginForm: React.FC = () => {
           <label htmlFor="remember-me">Remember me</label>
         </div>
         <button className="sign-in-button" type="submit">
-        {loading ? 'Loading...' : 'Sign In'}
+          {loading ? 'Loading...' : 'Sign In'}
         </button>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </section>
   );
 };
-
-
-
