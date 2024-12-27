@@ -7,7 +7,7 @@ const API_BASE_URL = 'http://localhost:3001/api/v1';
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (
-    credentials: { email: string; password: string; rememberMe: boolean },
+    credentials: { email: string; password: string },
     { rejectWithValue }
   ) => {
     try {
@@ -17,13 +17,7 @@ export const loginUser = createAsyncThunk(
       );
       const token = response.data.body.token;
 
-      if (credentials.rememberMe) {
-        localStorage.setItem('token', token);
-      } else {
-        sessionStorage.setItem('token', token);
-      }
-
-      return token;
+      return token; // Le token sera géré par Redux Persist
     } catch (error) {
       console.error(error);
       return rejectWithValue(

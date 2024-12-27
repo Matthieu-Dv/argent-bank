@@ -18,7 +18,7 @@ export const LoginForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password, rememberMe }));
+    dispatch(loginUser({ email, password }));
   };
 
   useEffect(() => {
